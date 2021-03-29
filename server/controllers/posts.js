@@ -42,7 +42,7 @@ module.exports = {
       const db = req.app.get('db');
       const {id} = req.session.user;
       const {title, img, content} = req.body;
-      const date = new Date
+      const date = new Date();
 
       if(id){
         db.post.create_post([id, title, img, content, date])
