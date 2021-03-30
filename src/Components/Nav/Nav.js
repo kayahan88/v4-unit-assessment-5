@@ -45,9 +45,9 @@ class Nav extends Component {
       return this.props.location.pathname !== '/' &&
         <div className='nav'>
           <div className='nav-profile-container'>
-            <div className='nav-profile-pic' style={{backgroundImage: (`${this.props.profile_pic}`)}}></div>
+            <div className='nav-profile-pic' style={{backgroundImage: `url(${this.props.reducer.profile_pic})`}}></div>
             
-            <p>{this.props.username}</p>
+            <p>{this.props.reducer.username}</p>
           </div>
           <div className='nav-links'>
 
@@ -70,13 +70,11 @@ class Nav extends Component {
 
 //mapStateToProps
 
-const mapStateToProps = (state) => {
+const mapStateToProps = reduxState => {
 
-  console.log(state)
-  return {state}
-  // const {username, profile_pic} = state
-  // return {
-  //   username, profile_pic
+    return {
+      reducer: reduxState
+    }
   };
 
 

@@ -30,7 +30,7 @@ class Auth extends Component {
         console.log('logging in');
         this.props.history.push('/dash')
         const {username, profile_pic} = this.state;
-        updateUser({username, profile_pic})
+        this.props.updateUser({username, profile_pic})
         
       })
       .catch(err => {

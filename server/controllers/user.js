@@ -2,28 +2,8 @@ const bcrypt = require('bcryptjs');
 
 module.exports = {
     register: async(req, res) => {
-        // const db = req.app.get('db');
-        // const {username, password} = req.body;
-        // try {
-        //     const [existingUser] = await db.user.find_user_by_username(username)
-
-        //         if(existingUser){
-        //             return res.status(409).send('Username taken.')
-        //         }
-            
-        //     const salt = bcrypt.genSaltSync(10);
-        //     const hash = bcrypt.hashSync(password, salt);
-
-        //     const [newUser] = await db.create_user(username, hash);
-        //     req.session.user = newUser;
-        //     res.status(200).send(newUser);
-        // } catch(err){
-        //     console.log(err)
-        //     res.sendStatus(500)
-        // }
         const {username, password} = req.body;
         const profile_pic = `https://robohash.org/${username}.png`;
-
         const db = req.app.get('db');
 
         const result = await db.user.find_user_by_username([username]);

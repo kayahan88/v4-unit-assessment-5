@@ -9,15 +9,25 @@ const UPDATE_USER = 'UPDATE_USER';
 const LOGOUT = 'LOGOUT';
 
 //action creators
-export const updateUser = (username, profile_pic) => {
-    console.log('hit')
-    const action = {
 
+export function updateUser(user){
+    console.log(user)
+    return {
         type: UPDATE_USER,
-        payload: {username, profile_pic}
+        payload: user
     }
-    return action 
-};
+}
+
+// export const updateUser = (username, profile_pic) => {
+
+//     console.log('hit')
+//     const action = {
+
+//         type: UPDATE_USER,
+//         payload: {username, profile_pic}
+//     }
+//     return action 
+// };
 
 export const logout = (username) => {
     return {
@@ -28,15 +38,30 @@ export const logout = (username) => {
 
 
 //reducer function
-const reducer = (state = initialState, action) => {
+export default function reducer(state = initialState, action){
     switch(action.type){
         case UPDATE_USER:
-            return {...state, ...action.payload}
-        case LOGOUT: 
-            return {...state, username: '', profile_pic: ''}
-        default:
-            return state;
+            return{
+                ...state,
+                username: action.payload.username,
+                profile_pic: action.payload.profile_pic
+            }
+        case LOGOUT:
+            return initialState
+        default: return state;
     }
-};
+}
 
-export default reducer;
+
+// const reducer = (state = initialState, action) => {
+//     switch(action.type){
+//         case UPDATE_USER:
+//             return {...state, ...action.payload}
+//         case LOGOUT: 
+//             return {...state, username: '', profile_pic: ''}
+//         default:
+//             return state;
+//     }
+// };
+
+// export default reducer;
